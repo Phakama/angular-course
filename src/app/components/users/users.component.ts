@@ -3,8 +3,6 @@ import { User } from '../../models/User';
 
 @Component({
 	selector: 'app-users',
-	// tslint:disable-next-line:indent
-	// tslint:disable-next-line:indent
 	templateUrl: './users.component.html',
 	styleUrls: ['./users.component.css']
 })
@@ -15,8 +13,7 @@ export class UsersComponent implements OnInit {
 		email: ''
 	};
 	users: User[];
-	// tslint:disable-next-line:no-inferrable-types
-	showExtended: boolean = true;
+	showExtended = true;
 	loaded = true;
 	enableAdd = false;
 	showUserForm: false;
