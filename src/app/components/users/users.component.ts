@@ -12,12 +12,7 @@ export class UsersComponent implements OnInit {
 	user: User = {
 		firstName: '',
 		lastName: '',
-		age: null,
-		address: {
-			street: '',
-			city: '',
-			state: ''
-		}
+		email: ''
 	};
 	users: User[];
 	// tslint:disable-next-line:no-inferrable-types
@@ -33,12 +28,7 @@ export class UsersComponent implements OnInit {
 			{
 				firstName: 'John',
 				lastName: 'Doe',
-				age: 30,
-				address: {
-					street: '50 MainStr.',
-					city: 'Cape town',
-					state: 'ZA'
-				},
+				email: 'john@gmail.com',
 				isActive: true,
 				registered: new Date('01/02/2018 08:30:00'),
 				hide: true
@@ -46,12 +36,7 @@ export class UsersComponent implements OnInit {
 			{
 				firstName: 'Lee',
 				lastName: 'Smith',
-				age: 35,
-				address: {
-					street: '5 LoerStr.',
-					city: 'Cape town',
-					state: 'ZA'
-				},
+				email: 'lee@yahoo.com',
 				isActive: false,
 				registered: new Date('05/12/2018 09:30:00'),
 				hide: true
@@ -59,12 +44,7 @@ export class UsersComponent implements OnInit {
 			{
 				firstName: 'Beke',
 				lastName: 'Pengas',
-				age: 35,
-				address: {
-					street: '55 Sir Lowry',
-					city: 'Woodstock',
-					state: 'ZA'
-				},
+				email: 'beke@hotmail.com',
 				isActive: true,
 				registered: new Date('15/02/2018 09:00:00'),
 				hide: true
@@ -74,15 +54,12 @@ export class UsersComponent implements OnInit {
 
 	}
 
-	addUser() {
-		this.users.unshift(this.user);
-		this.user.isActive = true;
-		this.user.registered = new Date();
-	}
-
-	// toggleHide(user: User) {
-	// 	user.hide = !user.hide;
+	// addUser() {
+	// 	this.users.unshift(this.user);
+	// 	this.user.isActive = true;
+	// 	this.user.registered = new Date();
 	// }
+
 	onSubmit(event) {
 		event.preventDefault();
 	}
