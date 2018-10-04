@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 
 import { User } from '../models/User';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class UserService {
   users: User[];
+  data: Observable<any>;
 
   constructor() {
     this.users = [
@@ -35,13 +38,13 @@ export class DataService {
         hide: true
       }
     ];
-   }
+  }
 
-   getUsers(): User[] {
-     return this.users;
-   }
+  getUsers(): User[] {
+    return this.users;
+  }
 
-   addUser(user: User) {
-     this.users.unshift(user)
-   }
+  addUser(user: User) {
+    this.users.unshift(user)
+  }
 }
