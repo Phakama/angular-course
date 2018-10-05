@@ -11,6 +11,13 @@ import { post } from 'selenium-webdriver/http';
 })
 export class PostsComponent implements OnInit {
   posts: Post[];
+  currentPost: Post = {
+    id: 0,
+    title: '',
+    body: ''
+  }
+
+  isEdit: boolean;
 
   constructor(private postService: PostService) { }
 
@@ -25,4 +32,35 @@ export class PostsComponent implements OnInit {
     this.posts.unshift(post);
   }
 
+  editPost(post: Post) {
+    this.currentPost = post;
+    this.isEdit = true;
+  }
+
+  onUpdatedPost(post) {
+    this.posts.forEach((cur, index) => {
+      if (post.id === cur.id) {
+        this.posts.splice(index, 1);
+        this.posts.unshift(post);
+        this.isEdit = false;
+        this.currentPost = {
+          id: 0,
+          title: '',
+          body: ''
+        }
+      }
+    })
+  }
+
+  removePost(post: Post) {
+    if (confirm('Are you sure?')) {
+      this.postService.removePost(post.id).subscribe(() => {
+        this.posts.forEach((cur, index) => {
+          if (post.id === cur.id) {
+            this.posts.splice(index, 1);
+          }
+        })
+      })
+    }
+  }
 }
